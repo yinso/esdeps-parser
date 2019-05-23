@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "declaration": true,
+    "rootDir": ".",
+    "outDir": "dist",
+    "lib": [
+      "es5",
+      "es2015.promise",
+      "es6",
+      "dom",
+    ],
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "strict": true,
+  },
+  // how to use include?
+  "include": [
+    "bin",
+    "lib",
+    "test",
+  ]
+}

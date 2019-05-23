@@ -1,0 +1,38 @@
+{
+  "name": "esdeps-parser",
+  "version": "1.0.0",
+  "description": "A JavaScript / TypeScript dependency parser",
+  "main": "./dist/lib",
+  "typings": "./lib/lib/index.d.ts",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --require source-map-support/register --recursive ./dist/test/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yinso/esdeps-parser.git"
+  },
+  "keywords": [
+    "require",
+    "import",
+    "parser",
+    "JavaScript",
+    "TypeScript"
+  ],
+  "author": "Yinso Chen <yinso.chen@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yinso/esdeps-parser/issues"
+  },
+  "homepage": "https://github.com/yinso/esdeps-parser#readme",
+  "devDependencies": {
+    "@types/fs-extra-promise": "^1.0.7",
+    "fs-extra-promise": "^1.0.1",
+    "mocha": "^6.1.4",
+    "mocha-typescript": "^1.1.17",
+    "pegjs": "^0.10.0",
+    "source-map-support": "^0.5.12"
+  },
+  "dependencies": {
+    "validac": "^1.0.3"
+  }
+}
