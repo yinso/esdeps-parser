@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A JavaScript / TypeScript dependency parser",
   "main": "./dist/lib",
-  "typings": "./lib/lib/index.d.ts",
+  "typings": "./dist/lib/index.d.ts",
   "scripts": {
     "test": "./node_modules/.bin/mocha --require source-map-support/register --recursive ./dist/test/"
   },
@@ -33,6 +33,6 @@
     "source-map-support": "^0.5.12"
   },
   "dependencies": {
-    "validac": "^1.0.3"
+    "validac": "^1.0.5"
   }
 }

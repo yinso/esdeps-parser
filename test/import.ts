@@ -1,5 +1,5 @@
 import { suite , test } from 'mocha-typescript';
-import * as P from '../lib/import-parser';
+import * as P from '../lib/parser';
 // import * as fs from 'fs-extra-promise';
 import * as path from 'path';
 import * as assert from 'assert';
@@ -62,7 +62,8 @@ describe('ImportParserTest', function () {
             input: `require('validac')`,
             expected: [
                 {
-                    require: 'validac',
+                    depType: 'require',
+                    spec: 'validac',
                     quote: `'`
                 }
             ]
@@ -71,7 +72,8 @@ describe('ImportParserTest', function () {
             input: `require("validac")`,
             expected: [
                 {
-                    require: 'validac',
+                    depType: 'require',
+                    spec: 'validac',
                     quote: `"`
                 }
             ]
@@ -80,7 +82,8 @@ describe('ImportParserTest', function () {
             input: `import * as V from 'validac'`,
             expected: [
                 {
-                    import: 'validac',
+                    depType: 'importAsFrom',
+                    spec: 'validac',
                     as: {
                         identifier: 'V'
                     },
@@ -92,7 +95,8 @@ describe('ImportParserTest', function () {
             input: `import { isString, isAny } from "validac"`,
             expected: [
                 {
-                    import: 'validac',
+                    depType: 'importItemsFrom',
+                    spec: 'validac',
                     items: [
                         {
                             identifier: 'isString'
@@ -109,10 +113,9 @@ describe('ImportParserTest', function () {
             input: `import V = require("validac")`,
             expected: [
                 {
-                    import: {
-                        require: 'validac',
-                        quote: `"`
-                    },
+                    depType: 'importRequire',
+                    spec: 'validac',
+                    quote: `"`,
                     id: {
                         identifier: 'V'
                     }
@@ -123,7 +126,8 @@ describe('ImportParserTest', function () {
             input: `import 'validac'`,
             expected: [
                 {
-                    import: 'validac',
+                    depType: 'importFrom',
+                    spec: 'validac',
                     quote: `'`
                 }
             ]
@@ -131,14 +135,15 @@ describe('ImportParserTest', function () {
     ]
 
     testCases.forEach((testCase) => {
-        it(`can parse ${JSON.stringify(testCase.expected, null, 2)}`, function () {
-            let mod = P.parse(testCase.input);
+        it(`can parse ${JSON.stringify(testCase.input, null, 2)}`, function () {
+            let mod = P.parse({
+                filePath: __filename,
+                data: testCase.input
+            });
             assert.deepEqual(mod.exps, testCase.expected)
             assert.deepEqual(mod.toString(), testCase.input)
         })
     })
-
-
 })
 
 // @suite class ImportParserTest {
