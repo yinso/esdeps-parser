@@ -27,7 +27,7 @@
   "devDependencies": {
     "@types/fs-extra-promise": "^1.0.7",
     "fs-extra-promise": "^1.0.1",
-    "mocha": "^6.1.4",
+    "mocha": "^10.2.0",
     "mocha-typescript": "^1.1.17",
     "pegjs": "^0.10.0",
     "source-map-support": "^0.5.12"
